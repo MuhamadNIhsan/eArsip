@@ -36,15 +36,15 @@
 				<div class="row">
 					<div class="col-sm-8 text-right">
 						<span>Advanced Search:</span>
+
 					</div>
 					<div class="col-sm-2">
 						<select class="custom-select" id="search_column">
 							<option value="0">Box<option>
 							<option selected value="1">Docs<option>
 							<option value="2">File Name<option>
-							<option value="3">Exp. Date<option>
-							<option value="4">Uploaded by<option>
-							<option value="5">Uploaded at<option>
+							<option value="3">Uploaded by<option>
+							<option value="4">Uploaded at<option>
 						</select>
 					</div>
 					<div class="col-sm-2">
@@ -55,9 +55,8 @@
                   <thead>
                   <tr>
 					<th>Box</th>
-                    <th>Docs Cat.</th>
+                    <th>Docs Category</th>
                     <th>File Name</th>
-					<th>Exp. Date</th>
 					<th>Uploaded by</th>
 					<th>Uploaded at</th>
                     <th>Action</th>
@@ -66,23 +65,9 @@
                   <tbody>
 				  <?php foreach($docs as $doc):?>
 				  <tr>
-					<?php 
-					$badge = "";
-					if($doc->fexp_date != NULL && $doc->fstatus == "1"){
-						$datediff = date_diff(date_create(date("Y-m-d")),date_create($doc->fexp_date));
-						$datediff->format("%R%a");
-						if($datediff->format("%R%a") <= 30){
-							$badge = "badge-danger";
-						}
-						if($datediff->format("%R%a") > 30 && $datediff->format("%R%a") <= 60){
-							$badge = "badge-warning";
-						}
-					}
-					?>
 					<td><?=$doc->bcode?></td>
 					<td><?=$doc->cname?></td>
 					<td><?=$doc->fname?></td>
-					<td><span class="<?=$badge?>"><?= ($doc->fexp_date != NULL) ? $doc->fexp_date  : "N/A" ?></span></td>
 					<td><?=$doc->uname?></td>
 					<td><?=$doc->fuploaded_at?></td>
                     <td class="text-center">
@@ -201,7 +186,7 @@
 			var defSearch = 0;
 			$(document).on('change','#search_column',function(){
 				defSearch = this.value;
-				if(defSearch == '3' || defSearch == '5'){
+				if(defSearch=='4'){
 					$('#search_column_val').datepicker({ dateFormat: 'yy-mm-dd' });
 				}else{
 					$('#search_column_val').datepicker("destroy");
@@ -210,8 +195,8 @@
 			$(document).on('keyup change','#search_column_val',function(){
 				defSearch = $('#search_column').val();
 				table.search('').columns().search('').draw();
-				//console.log(defSearch);
-				//console.log(this.value);
+				console.log(defSearch);
+				console.log(this.value);
 				table.column(defSearch).search(this.value).draw().buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 			});
 		}

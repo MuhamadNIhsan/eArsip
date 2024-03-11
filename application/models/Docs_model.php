@@ -51,6 +51,7 @@ class Docs_model extends CI_Model {
 		$this->db->join('categories','categories.cid = files.cid','left');
 		$this->db->join('boxes','boxes.bcode = files.bcode','left');
 		$this->db->where_in('files.fid',$data);
+		$this->db->order_by('files.fexp_date',"ASC");
 		$query = $this->db->get();
 		return $query->result();
 	}
