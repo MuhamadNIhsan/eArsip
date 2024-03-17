@@ -1,4 +1,4 @@
-  <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -40,27 +40,46 @@
                     <label for="fileName">File Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="fileName" name="fileName" required>
                   </div>
-				  <div class="form-group">
-					<label>Category</label>
-					<select class="custom-select" name="catFile">
-						<?php foreach($categories as $cat):?>
-							<option value="<?=$cat->cid ?>"><?=$cat->cname ?></option>
-						<?php endforeach;?>
-					</select>
-				  </div>
-				  <div class="form-group">
-					<label>Box Storage</label>
-					<select class="custom-select" name="boxFile">
-						<?php foreach($boxes as $box):?>
-							<option value="<?=$box->bcode ?>"><?=$box->bcode ?></option>
-						<?php endforeach;?>
-					</select>
-				  </div>
-				  <div class="form-group">
-					<label>Description</label>
-					<textarea class="form-control" rows="3" name="fileDesc"></textarea>
-				  </div>                  
-				  <div class="form-group">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                      <label for="fileStatus">Status</label>
+                        <select class="custom-select" id="fileStatus" name="fileStatus">
+                          <option value="1" selected>Active</option>
+                          <option value="0">Inactive</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="fileExp">Exp. Date</label>
+                        <input type="text" class="form-control" id="fileExp" name="fileExp">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Category</label>
+                        <select class="custom-select" name="catFile">
+                          <?php foreach($categories as $cat):?>
+                            <option value="<?=$cat->cid ?>"><?=$cat->cname ?></option>
+                          <?php endforeach;?>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label>Box Storage</label>
+                        <select class="custom-select" name="boxFile">
+                          <?php foreach($boxes as $box):?>
+                            <option value="<?=$box->bcode ?>"><?=$box->bcode ?></option>
+                          <?php endforeach;?>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" rows="3" name="fileDesc"></textarea>
+                  </div>                  
+        				  <div class="form-group">
                     <label for="InputFile">File input <span class="text-danger">*</span></label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -69,14 +88,14 @@
                       </div>
                     </div>
                   </div>
-					<div class="form-group">
-					  <label>Group Data</label>
-						  <select class="duallistbox" multiple="multiple" id="group[]" name="group[]">
-							<?php foreach ($groups as $group): ?>
-								<option value="<?= $group->gid ?>"><?= $group->gname ?></option>
-							<?php endforeach;?>
-						  </select>
-					</div>
+                  <div class="form-group">
+                    <label>Group Data</label>
+                      <select class="duallistbox" multiple="multiple" id="group[]" name="group[]">
+                      <?php foreach ($groups as $group): ?>
+                        <option value="<?= $group->gid ?>"><?= $group->gname ?></option>
+                      <?php endforeach;?>
+                      </select>
+                  </div>
                 </div>
                 <!-- /.card-body -->
 
@@ -110,6 +129,7 @@
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <!-- Bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -118,4 +138,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap4-duallistbox/4.0.2/jquery.bootstrap-duallistbox.min.js" integrity="sha512-l/BJWUlogVoiA2Pxj3amAx2N7EW9Kv6ReWFKyJ2n6w7jAQsjXEyki2oEVsE6PuNluzS7MvlZoUydGrHMIg33lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 $('.duallistbox').bootstrapDualListbox()
+$('#fileExp').datepicker({ dateFormat: 'yy-mm-dd' });
+bsCustomFileInput.init()
 </script>

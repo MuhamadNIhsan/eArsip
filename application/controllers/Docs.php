@@ -117,6 +117,8 @@ class Docs extends CI_Controller {
 		$cid = $this->input->post('catFile');
 		$bcode = $this->input->post('boxFile');
 		$fdesc = $this->input->post('fileDesc');
+		$fstatus = $this->input->post('fileStatus');
+		$fexp_date = $this->input->post('fileExp');
 		if(!$this->upload->do_upload('InputFile')){
 			$error = array('error'=>$this->upload->display_errors());
 			$this->session->set_flashdata('err',$error);
@@ -141,6 +143,8 @@ class Docs extends CI_Controller {
 				'cid'=>$cid,
 				'bcode'=>$bcode,
 				'gid'=>$groups,
+				'fexp_date'=>$fexp_date,
+				'fstatus'=>$fstatus,
 				'fcreated_at'=>date('Y-m-d H:i:s'),
 				'fuploaded_at'=>date('Y-m-d H:i:s')
 			);
@@ -209,6 +213,8 @@ class Docs extends CI_Controller {
 		$raw_groups = $this->input->post('group');
 		$groups = "@".implode("@",$raw_groups)."@";
 		$fdesc = $this->input->post('fileDesc');
+		$fstatus = $this->input->post('fileStatus');
+		$fexp_date = $this->input->post('fileExp');
 		$oldFile = FCPATH .'assets/files/'.$this->input->post('oldFile');
 		if(!$this->upload->do_upload('InputFile')){
 			$error = array('error'=>$this->upload->display_errors());
@@ -219,6 +225,8 @@ class Docs extends CI_Controller {
 				'cid'=>$cid,
 				'bcode'=>$bcode,
 				'gid'=>$groups,
+				'fexp_date'=>$fexp_date,
+				'fstatus'=>$fstatus,
 				'fupdated_at'=>date('Y-m-d H:i:s')
 			);
 		}else{
@@ -231,6 +239,8 @@ class Docs extends CI_Controller {
 				'cid'=>$cid,
 				'bcode'=>$bcode,
 				'gid'=>$groups,
+				'fexp_date'=>$fexp_date,
+				'fstatus'=>$fstatus,
 				'fupdated_at'=>date('Y-m-d H:i:s'),
 				'fuploaded_at'=>date('Y-m-d H:i:s')
 			);

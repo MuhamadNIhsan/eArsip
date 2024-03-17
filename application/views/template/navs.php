@@ -16,7 +16,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="https://www.ptjas.co.id/wp-content/uploads/2021/07/logo-JAS-noCASdes_Artboard-2-197x54-1.png" alt="AdminLTE Logo" class="brand-image img-rounded elevation-3" style="opacity: .8">
+      <img src="#" alt="JAS Logo" class="brand-image img-rounded elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">eArsip <i class="fa fa-folder-open-o"></i></span>
     </a>
     <!-- Sidebar -->
